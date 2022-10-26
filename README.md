@@ -1,12 +1,6 @@
 # Oracle-Markdown-Notes
 
 
-## Section 0: Starting MySQL
-1. start the mysql CLI:
-`mysql-ctl cli;`
-2. List databases:
-`show databases;`
-
 ## Section 1: Creating databases and tables
 
 **Create databases:**
