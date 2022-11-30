@@ -1,28 +1,5 @@
 # Oracle-Markdown-Notes
 
-
-## Section 1: Creating databases and tables
-
-**Create databases:**
-```sql
-CREATE DATABASES database_name;
-```
-
-**Drop databases:**
-```sql
-DROP DATABASE database_name;
-```
-
-**Use database:**
-```sql
-USE database_name;
-```
-
-**See the current selected database:**
-```sql
-SELECT database();
-```
-
 **Common Data types:**
 1. Variable string:
 VARCHAR(string_length)
