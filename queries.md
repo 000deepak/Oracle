@@ -53,7 +53,7 @@ SELECT first_name FROM employees ORDER BY first_name;
 SELECT first_name FROM employees LIMIT 1;
 ```
 
-### llg
+### 11g
 ```sql
 SELECT first_name FROM employees where rownum <2;
 ```
