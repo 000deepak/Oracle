@@ -41,13 +41,13 @@ Eg: select * from emp where deptno not in(10,20,null);
 ``` 
 >Note: In all relational databases “not in” operator doesnt  work with “null” values. 
 
-
-#### Null: Null is an undefined, unavailable, unknown value. It is not same as “zero”. Any arithmetic operations performed on null values again it becomes “null”.
+##### Null
+* Null is an undefined, unavailable, unknown value. It is not same as “zero”. Any arithmetic operations performed on null values again it becomes “null”.
 ```sql 
 Eg: null+50-> null. 
 ```
 > To overcome this problem oracle provided “NVL()” function. 
-### NVL()
+#### NVL()
 * predefined function which is used to replace or substitute user defined value in place of “null”. 
 * Syntax: NVL(exp1,exp2); 
 Here exp1,exp2 must belongs to same datatype. If exp1 is null then it returns exp2. Otherwise it returns exp1.
@@ -55,7 +55,7 @@ Here exp1,exp2 must belongs to same datatype. If exp1 is null then it returns ex
 NVL(null,30) -> 30. 
 ```
  
-### NVL2() 
+#### NVL2() 
 * Syntax: NVL2(exp1,exp2,exp3). 
 Here if exp1 is null, then it returns exp3. Otherwise it returns exp2. 
 ```sql 
