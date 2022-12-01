@@ -198,7 +198,7 @@ SQL> desc first;
 It is used to rename a table and renaming a column also. 
 
 #### Renaming a Table:  
-> Syntax: rename oldtablename to new tablename; 
+> Syntax: rename oldtablename to new tablename; <br>
 `SQL> rename first to last;` 
  
 #### Renaming a Column: (oracle 9i) 
