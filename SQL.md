@@ -109,6 +109,8 @@ Creating a table:
 * Syntax: alter table tablename drop(colname1, colname2, colname3….); 
 * Example: SQL> alter table first drop(sal); 
  
+> Method3
+* dropping all coloumns
 * Error: cannot drop all columns in a table. 
 * NOTE: In all database systems we cannot drop all columns in a table. 
 
@@ -131,9 +133,12 @@ Oracle 10g (Enterprise Edition)
 Syntax: drop table tablename; 
                            
 Get it back from recycle bin. 
-Syntax: flashback table tablename to before drop; To drop permanently: 
+Syntax: flashback table tablename to before drop; 
+
+To drop permanently: 
 Syntax: drop table tablename purge; 
-Example: (dropping a table  oracle 10g Enterprise Edition) SQL> drop table first; Table dropped. 
+Example: (dropping a table  oracle 10g Enterprise Edition) 
+SQL> drop table first; Table dropped. 
 Get it back the table: 
 SQL> flashback table first to before drop; 
  
@@ -181,20 +186,22 @@ Testing:
 SQL> select original_name from recyclebin; 
 No rows selected 
  
-4)	Truncate: Oracle 7.0 introduced truncate command , whenever we are using “truncate” command total data permanently deleted from table. 
+### 4)	Truncate
+Oracle 7.0 introduced truncate command , whenever we are using “truncate” command total data permanently deleted from table. 
 Syntax: truncate table tablename; 
 Example: create table first as select * from emp; 
 SQL> select * from first; 
 SQL> truncate table first; Testing: SQL> select * from first; No rows selected. 
 SQL> desc first; 
  
-5)	Rename: It is used to rename a table and renaming a column also. 
-Renaming a Table:  
-Syntax: rename oldtablename to new tablename; 
-Example: rename first to last; 
+### 5)	Rename
+It is used to rename a table and renaming a column also. 
+
+#### Renaming a Table:  
+> Syntax: rename oldtablename to new tablename; 
+`SQL> rename first to last;` 
  
-Renaming a Column: (oracle 9i) 
-Syntax: alter table tablename rename column oldcolumnname to newcolumnname; 
-Example: SQL> alter table emp rename column empno to sno; 
-SQL> select * from emp; 
+#### Renaming a Column: (oracle 9i) 
+> Syntax: alter table tablename rename column oldcolumnname to newcolumnname; 
+`SQL> alter table emp rename column empno to sno;`  
 Note: In all database systems by default all DDL commands are automatically committed.  
