@@ -82,8 +82,9 @@ select * from tablename where columnname is not null;
 
 ### 4) Like
 * It is used to search strings based on character pattern. “Like” operator performance is very high compare to searching functions. 
->In all databases along with like operator we are using 2 wild card charcters. 
- 
+
+>In all databases along with like operator we are using 2 wild card charcters. <br>
+> Two types of wild card characters 
 * % -> group of characters if want to match or string 
 * _ -> single character to match. 
 ```sql 
