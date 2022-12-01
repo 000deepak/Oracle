@@ -6,7 +6,6 @@
 3.	Select particular cols and all rows. 
 4.	Select particular cols and particular rows. 
  
-Date: 12/3/15 
 1. Creating a new table from another table: 
 ```sql 
 create table newtablename as select * from existingtablename; 
@@ -23,7 +22,7 @@ create table newtablename as select * from existingtablename where falseconditio
 3.	Logical operator (AND,OR,NOT) 
 4.	Special operator. 
  
-** Special operators: 
+## Special operators: 
 1)	`In` opposite `not in` 
 2)	`between` opposite `not between` 
 3)	`is null` opposite is `not null` 
@@ -48,14 +47,15 @@ Eg: select * from emp where deptno not in(10,20,null);
 Eg: null+50-> null. 
 ```
 > To overcome this problem oracle provided “NVL()” function. 
-### NVL(): NVL() is a predefined function which is used to replace or substitute user defined value in place of “null”. 
+### NVL()
+* predefined function which is used to replace or substitute user defined value in place of “null”. 
 * Syntax: NVL(exp1,exp2); 
 Here exp1,exp2 must belongs to same datatype. If exp1 is null then it returns exp2. Otherwise it returns exp1.
 ```sql  
 NVL(null,30) -> 30. 
 ```
  
-### NVL2(): Oracle 9i introduced NVL2() function. This function accepts three parameters. 
+### NVL2() 
 * Syntax: NVL2(exp1,exp2,exp3). 
 Here if exp1 is null, then it returns exp3. Otherwise it returns exp2. 
 ```sql 
