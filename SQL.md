@@ -122,21 +122,21 @@ Creating a table:
  
 
 #### Droping a Table: 
-Syntax: drop table tablename; 
+> Syntax: drop table tablename; 
                            
 #### Get it back from recycle bin. 
-Syntax: flashback table tablename to before drop; 
+> Syntax: flashback table tablename to before drop; 
 
 #### To drop permanently: 
-Syntax: drop table tablename purge;
+> Syntax: drop table tablename purge;
 
 #### RECYCLE BIN: Oracle 10g introduced recycle bin which is used to store dropped tables. Recycle bin is a read only table whenever we are installing oracle then automatically so many read only tables are created. These read only tables are also called as “ Data Dictionaries”.  
                   
 #### To Drop particular table from Recycle bin: 
-Syntax: purge table tablename; 
+> Syntax: purge table tablename; 
 
 #### To Drop all tables from Recycle bin: 
-Syntax: SQL> purge recyclebin; 
+> Syntax: SQL> purge recyclebin; 
  
 ### 4)	Truncate
 * total data permanently deleted from table. 
