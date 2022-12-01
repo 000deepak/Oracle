@@ -27,8 +27,10 @@ SQL> insert into first(name)values(„www‟);
 
  
 ### 2)	Update: It is used to change data within a table. 
-> Syntax: update tablename set columnname=newvalue where columnname=oldvalue; 
-> SQL> update emp set sal=1000 where ename=‟SMITH‟; 
+* Syntax: update tablename set columnname=newvalue where columnname=oldvalue; 
+```sql
+SQL> update emp set sal=1000 where ename=‟SMITH‟; 
+```
 > Note: In all database if we want to insert data into particular cell then we must use update command. 
 
 ### 3)	Delete
