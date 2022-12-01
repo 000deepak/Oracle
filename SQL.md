@@ -116,84 +116,33 @@ Creating a table:
 
 ### 3) DROP
 * It is used to remove database objects from database. 
-Syntax: drop objecttype objectname; 
+> Syntax: drop objecttype objectname; 
 1.	Drop table tablename; 
 2.	Drop view viewname; 
  
- 
- 
- 
-Droping a Table: 
- 
-Before Oracle 10g: 
-Syntax: drop table tablename; 
-                   
- 
-Oracle 10g (Enterprise Edition) 
+
+#### Droping a Table: 
 Syntax: drop table tablename; 
                            
-Get it back from recycle bin. 
+#### Get it back from recycle bin. 
 Syntax: flashback table tablename to before drop; 
 
-To drop permanently: 
-Syntax: drop table tablename purge; 
-Example: (dropping a table  oracle 10g Enterprise Edition) 
-SQL> drop table first; Table dropped. 
-Get it back the table: 
-SQL> flashback table first to before drop; 
- 
-Testing: 
-Method1: SQL> desc first; 
-Error: Object first does not exist. 
- 
-Method2: SQL> flashback table first to before drop; Error: object not in Recycle bin. 
- 
-Date: 10/3/15 
- 
-RECYCLE BIN: Oracle 10g introduced recycle bin which is used to store dropped tables. Recycle bin is a read only table whenever we are installing oracle then automatically so many read only tables are created. These read only tables are also called as “ Data Dictionaries”.  
- 
- 
-                                 
-In oracle, we can also drop tables from recycle bin using “purge” command. 
-To Drop particular table from Recycle bin: 
+#### To drop permanently: 
+Syntax: drop table tablename purge;
+
+#### RECYCLE BIN: Oracle 10g introduced recycle bin which is used to store dropped tables. Recycle bin is a read only table whenever we are installing oracle then automatically so many read only tables are created. These read only tables are also called as “ Data Dictionaries”.  
+                  
+#### To Drop particular table from Recycle bin: 
 Syntax: purge table tablename; 
-Example: SQL> create table first(sno number(10)); 
-SQL> drop table first; 
-SQL> desc recycle bin; 
-SQL> select original_name from recyclebin; 
-   Original_name 
--------------------- 
-    First 
-SQL> purge table first; Testing: 
-SQL> select original_name from recyclebin; 
-No rows selected; 
- 
-To Drop all tables from Recycle bin: 
+
+#### To Drop all tables from Recycle bin: 
 Syntax: SQL> purge recyclebin; 
-Example: SQL> create table first(sno number(10)); 
-SQL> create table second(sno number(10)); 
-SQL> drop table first; 
-SQL> drop table second; 
-SQL> desc recyclebin; 
-SQL> select original_name from recyclebin; 
-   Original_name 
----------------------- 
-       First 
-      Second 
-SQL> purge recyclebin; 
- 
-Testing: 
-SQL> select original_name from recyclebin; 
-No rows selected 
  
 ### 4)	Truncate
-Oracle 7.0 introduced truncate command , whenever we are using “truncate” command total data permanently deleted from table. 
-Syntax: truncate table tablename; 
-Example: create table first as select * from emp; 
-SQL> select * from first; 
-SQL> truncate table first; Testing: SQL> select * from first; No rows selected. 
-SQL> desc first; 
- 
+* total data permanently deleted from table. 
+> Syntax: truncate table tablename; <br>
+`SQL> truncate table first;` 
+
 ### 5)	Rename
 It is used to rename a table and renaming a column also. 
 
@@ -202,6 +151,6 @@ It is used to rename a table and renaming a column also.
 `SQL> rename first to last;` 
  
 #### Renaming a Column: (oracle 9i) 
-> Syntax: alter table tablename rename column oldcolumnname to newcolumnname; 
-`SQL> alter table emp rename column empno to sno;`  
+> Syntax: alter table tablename rename column oldcolumnname to newcolumnname; <br>
+`SQL> alter table emp rename column empno to sno;`<br>  
 Note: In all database systems by default all DDL commands are automatically committed.  
