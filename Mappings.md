@@ -1,3 +1,6 @@
+
+
+oracle pass : @Oracle01  
 # One-to-one (1:1)
 * one record from table A is related to a maximum of one record in table B.
 * the primary key of table B (with no orphan record) must be the secondary key of table A (with orphan records).
@@ -29,7 +32,6 @@ INSERT INTO STATE values(111, 'Virginia', 2000000, 110);
 # One-to-many (1:M)
 * one record from table A is related to one or more records in table B. 
 * one record in table B cannot be related to more than one record in table A.
-
 * the primary key of table A (the "one" table) must be the secondary key of table B (the "many" table).
 
 > For example:
@@ -47,13 +49,20 @@ CREATE TABLE Vendor(
     StampDate date
 );
 
+INSERT INTO Vendor(VendorNumber, Name, Address, City,Street,ZipCode,Contact,PhoneNumber,Status,StampDate) 
+values(110, 'Bob', '123 Any St','abc','cd',1234,'asdf',1234,'active', '1-Jan-2009');
+
+
 CREATE TABLE Inventory(
     Item varchar2(6) PRIMARY KEY,
     Description varchar2(30),
-    CurrentQuantity number(4) NOT NULL,
-    VendorNumber number(2) REFERENCES Vendor(VendorNumber),
-    ReorderQuantity number(3) NOT NULL
+    CurrentQuantity number(10) NOT NULL,
+    VendorNumber number(10) REFERENCES Vendor(VendorNumber),
+    ReorderQuantity number(10) NOT NULL
 );
+
+INSERT INTO Inventory(Item, Description, CurrentQuantity, VendorNumber,ReorderQuantity) 
+values('Bob','des',1,110,1);
 ```
 
 
