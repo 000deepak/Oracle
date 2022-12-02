@@ -176,7 +176,8 @@ MITH
 If you want to count number of times particular character occurs within a given string then also we are using replace function along with length function. 
 
  
-### DATE functions: In oracle by default date format is DD-MON-YY. Oracle having following date functions. 
+### DATE functions
+* In oracle by default date format is DD-MON-YY. Oracle having following date functions. 
 1.  Sysdate 
 2.	Add_months() 
 3.	Last_day() 
@@ -261,7 +262,8 @@ Solution: SQL> select to_date(‟27/06/05‟,‟DD/MM/YY‟) from dual;
  
 
  
-### Fill mode(FM): Whenever we are using to_char() if format is either month(or) day then oracle server automatically returns “spaces” when the month (or) day value less than the maximum length of the month (or) day. To overcome this problem oracle provided Fill Mode(FM) which suppress blank spaces and leading zeros(0). This mode is used in second parameter of the to_char().
+### Fill mode(FM)
+* Whenever we are using to_char() if format is either month(or) day then oracle server automatically returns “spaces” when the month (or) day value less than the maximum length of the month (or) day. To overcome this problem oracle provided Fill Mode(FM) which suppress blank spaces and leading zeros(0). This mode is used in second parameter of the to_char().
 ```sql  
 SQL> select to_char(to_date(‟15-JUN-05‟),‟DD-MON-YY‟) from dual; 
 15-JUNE       -05 
@@ -333,7 +335,8 @@ Oracle having following group function
 
 In all databases group functions are operate over number of values within a column and returns a single value
 
-### 1.	Max(): It returns maximum value within a column. 
+### 1.	Max()
+* It returns maximum value within a column. 
 ```sql 
  SQL> select max(sal) from emp; 
 6600 
@@ -355,7 +358,8 @@ SQL> select * from emp where sal= min(sal);
 Error: group function is not allowed in “where” 
  ```
 
-### 3.	Avg(): It returns average from number data type column. 
+### 3.	Avg()
+* It returns average from number data type column. 
 ```sql 
 SQL> select avg(sal) from emp; 
 2473.21429 
@@ -367,13 +371,15 @@ SQL> select avg(nvl(comm,0)) from emp;
 157.142857 
  ```
 
-### 4.	Sum(): It returns total from number data type column. 
+### 4.	Sum()
+* It returns total from number data type column. 
 ```sql 
 SQL> select sum(sal) from emp; 
 34625 
  ```
 
-### 5.	Count(*): It counts number of rows in a table(including null values) 
+### 5.	Count(*)
+* It counts number of rows in a table(including null values) 
 ```sql 
 SQL> select count(*) from emp; 
 6.	Count(column name): It counts number of not null values within a column. 
@@ -383,7 +389,8 @@ SQL> select count(distinct(dept no)) from emp;
 3
 ``` 
 
-### GROUP BY: This clause is used to divide similar data items into set of logical groups. 
+### GROUP BY
+*This clause is used to divide similar data items into set of logical groups. 
 ```sql 
 Syntax: select columnname….. from tablename group by columnname; 
 SQL> select deptno,count(*) from emp group by deptno; 
@@ -397,84 +404,35 @@ SQL> select deptno, min(sal), max(sal) from emp group by deptno;
  
 >Note: Whenever we are submitting “group by” clauses then database servers select the data from the table from based on the group by clause columns. These columns space database servers group the data in the result set, from this result only we are selecting the data using number of columns after select keyword.<br>
 
-> Note: Whenever we are using group functions without using “group by” clause then database servers executes these group functions based on all values in a column. Whereas when we are using “group by” then these group functions executed each and every group wise in a table. Note: Generally in all database systems we are not allowed to display group function with another columns to overcome this problem we must use “group by” clause. Eg: step1: SQL> select sum(sal) from emp; <br>
+> Note: Whenever we are using group functions without using “group by” clause then database servers executes these group functions based on all values in a column. Whereas when we are using “group by” then these group functions executed each and every group wise in a table. Note: Generally in all database systems we are not allowed to display group function with another columns to overcome this problem we must use “group by” clause.
 
 
-34627 
-Step2: SQL> select deptno, sum(sal) from emp; 
-Error: not a single-group group function 
-Solution: SQL> select deptno, sum(sal) from emp group by deptno; 
-DEPTNO   SUM(SAL) 
-------- ---------- 
-     30       9400 
-     20      10875 
-     10       8750 
-Eg: SQL> select deptno, job, sum(sal), count(*) from emp group by deptno, job; 
-DEPTNO JOB         SUM(SAL)   COUNT(*) 
-------- --------- ---------- ----------      20 CLERK           1900            2 
-     30 SALESMAN        5600         4 
-     20 MANAGER         2975          1 
-     30 CLERK            950              1      10 PRESIDENT       5000          1      30 MANAGER         2850          1 
-     10 CLERK           1300             1 
-     10 MANAGER         2450          1 
-     20 ANALYST         6000           2 
+### HAVING Clause
+In all databse systems after “group by” clause we are not allowed to use “where” clause. In place of this one ansi/iso SQL provided another clause “having”. Generally if we want to restrict groups after “group by” then we must use “having” clause. Generally in “where” clause we are not allowed to use group functions where as in having clause we can also use group functions. 
+
+### ORDER BY  
+* This clause is used to arrange the data in sorting order along with “order by” clause we are using two keywords. 
  
-Date: 27/3/15 
- 
-Q) Write a query to display those departments having more than 3 employees from emp table? 
-Ans: SQL> select deptno,count(*) from emp group by deptno where count(*)>3; Error: SQL commond not properly ended. 
-Solution: SQL> select deptno, coutn(*) from emp group by deptno having count(*)>3; 
- 
-HAVING Clause: In all databse systems after “group by” clause we are not allowed to use “where” clause. In place of this one ansi/iso SQL provided another clause “having”. Generally if we want to restrict groups after “group by” then we must use “having” clause. Generally in “where” clause we are not allowed to use group functions where as in having clause we can also use group functions. 
-Q) Write a query to display those departments having more than 10,000 sun(sal) from emp table? 
-And: SQL> select deptno, sum(sal) from emp group by deptno having sum(sal)>10,000; 
- 
- 
-Deptno      sum(sal) 
------------------------ 
-  10          13550 
-  20          12675 
- 
-Q) Write a query to display year, number of employees per year in which more than one employee was hired from emp table using “group by”? 
-And: 	SQL> 	select 	to_char(hiredate,‟YYYY‟), 	count(*) 	from 	emp 	group by(to_char(hiredate,‟YYYY‟)); 
-                                    OR 
-SQL> select to_char(hiredate,‟YYYY‟) year, count(*) from emp  group by to_char(hiredate,‟YYYY‟)  having count(*)>1; 
- 
-year           count(*) 
------------------------- 
-1981	10 
-1982	2 
- 
-Invisible columns: 
-Eg: SQL> select deptno, sum(sal) from emp  group by deptno  having sum(sal)>10000; 
-Here count(*) is invisible column. 
-SQL> select deptno, sum(sal) from emp 
-Group by deptno  
-Having count(*)>3; 
-Deptno            sum(sal) 
---------------------------- 
-  20  	12675 
-  30  	 8400 
-ORDER BY:  This clause is used to arrange the data in sorting order along with “order by” clause we are using two keywords. 
- 
-By default „order by‟ clause having “Ascending order”. 
+By default order by clause having “Ascending order”.
+```sql 
 Syntax: SQL> select * from tablename order by columnname[asc/desc]; 
 Eg: SQL> select sal from emp order by sal; SQL> select deptno, sal from emp order by deptno, sal; 
 Eg: SQL> select deptno, count(*) from emp Where sal>1000 group by deptno having count(*)>3 order by depnto desc; 
+```
  
-Deptno     count(*) 
----------------------- 
-30 	 	4 
-20 	 	5 
- 
-Date: 28/3/15 
- 
-Note: In oracle we can also use column position in place of columnname within “order by” clause which is used to improve performance query. 
+> Note: In oracle we can also use column position in place of columnname within “order by” clause which is used to improve performance query.
+```sql 
 Eg: SQL> select * from emp order by 6 desc; 
- 
-ROLLUP, Cube: 
-Oracle 8i introduced rollup, cube clauses. These clauses are used along with group by clause only. These clauses are used to calculate subtotal, grand total automatically. Syntax: select col1, col2,…….. from tablename     group by rollup(col1,col2,..); 
-Syntax: select col1, col2,…. From tablename group by cube(col1,col2,…); 
-Rollup is used to calculate subtotal value based on a single column where as if we want to calculate subtotal value based on number of column wise then we must use cube. Eg: SQL> select deptno, job, sum(sal)from emp group by rollup(deptno, job); 
+ ```
+
+### ROLLUP, Cube: 
+Oracle 8i introduced rollup, cube clauses. These clauses are used along with group by clause only. These clauses are used to calculate subtotal, grand total automatically. 
+```sql
+Syntax: select col1, col2,…….. from tablename     group by rollup(col1,col2,..); 
+Syntax: select col1, col2,…. From tablename group by cube(col1,col2,…);
+```
+Rollup is used to calculate subtotal value based on a single column where as if we want to calculate subtotal value based on number of column wise then we must use cube. Eg: SQL> select deptno, job, sum(sal)from emp group by rollup(deptno, job);
+```sql 
 SQL> select deptno, job, sum(sal), count(*) from emp group by cube(deptno,job); 
 Eg: SQL> select ename, sum(sal) from emp group by rollup(ename); 
+```
